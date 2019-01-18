@@ -58,7 +58,7 @@ const TemplateWrapper = ({ children }) => (
           <meta property="og:image" content="/img/og-image.jpg" />
         </Helmet>
         <Navbar />
-        <div className="container mx-auto pt-24 md:pt-16 px-6">
+        <div>
           {children}
         </div>
         <footer className="bg-blue">

@@ -10,7 +10,7 @@ export default class IndexPage extends React.Component {
 
     return (
       <Layout>
-        <div className="container mx-auto flex flex-col md:flex-row items-center my-12 md:my-24">
+        <div>
           {/*Left Col*/}
           <div className="flex flex-col w-full lg:w-1/2 justify-center items-start pt-12 pb-24 px-6">
             <p className="uppercase tracking-loose">Witty Tagline</p>
@@ -38,33 +38,35 @@ export default class IndexPage extends React.Component {
           </div>
         </div>
 
-        <section className="section">
-          <div className="content">
-            <h1 className="has-text-weight-bold is-size-2">Latest Stories</h1>
-          </div>
+        <section className="pb-24 pt-12 md:pt-24">
+        <div className="container mx-auto flex justify-start items-start flex-wrap">
           {posts.map(({ node: post }) => (
-            <div
-              className="content"
-              style={{ border: '1px solid #333', padding: '2em 4em' }}
-              key={post.id}
-            >
-              <p>
-                <Link className="has-text-primary" to={post.fields.slug}>
-                  {post.frontmatter.title}
-                </Link>
-                <span> &bull; </span>
-                <small>{post.frontmatter.date}</small>
-              </p>
-              <p>
-                {post.excerpt}
-                <br />
-                <br />
-                <Link className="button is-small" to={post.fields.slug}>
-                  Keep Reading →
-                </Link>
-              </p>
+            <div className="w-full md:w-1/2 lg:w-1/3 p-4">
+              <a href="" className="block no-underline bg-white transition shadow-lg hover:shadow hover:-translateY-sm rounded-lg overflow-hidden">
+                <div
+                  className="w-full"
+                  key={post.id}
+                >
+                  <p>
+                    <Link className="has-text-primary" to={post.fields.slug}>
+                      {post.frontmatter.title}
+                    </Link>
+                    <span> &bull; </span>
+                    <small>{post.frontmatter.date}</small>
+                  </p>
+                  <p>
+                    {post.excerpt}
+                    <br />
+                    <br />
+                    <Link className="button is-small" to={post.fields.slug}>
+                      Keep Reading →
+                    </Link>
+                  </p>
+                </div>
+              </a>
             </div>
           ))}
+        </div>
         </section>
       </Layout>
     );
