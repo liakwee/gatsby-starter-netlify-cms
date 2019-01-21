@@ -42,25 +42,19 @@ export default class IndexPage extends React.Component {
         <div className="container mx-auto flex justify-start items-start flex-wrap">
           {posts.map(({ node: post }) => (
             <div className="w-full md:w-1/3 lg:w-1/4 p-4">
-              <a href="" className="">
+              <a href={post.fields.slug} className="">
+              <img src={post.frontmatter.cover.childImageSharp.resolutions.src} alt=""/>
                 <div
                   className="w-full"
                   key={post.id}
                 >
                   <p>
-                    <Link className="has-text-primary" to={post.fields.slug}>
-                      {post.frontmatter.title}
-                    </Link>
+                    <h3>{post.frontmatter.title}</h3>
                     <span> &bull; </span>
                     <small>{post.frontmatter.date}</small>
                   </p>
                   <p>
                     {post.excerpt}
-                    <br />
-                    <br />
-                    <Link className="button is-small" to={post.fields.slug}>
-                      Keep Reading →
-                    </Link>
                   </p>
                 </div>
               </a>
@@ -96,6 +90,16 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
+            cover {
+              childImageSharp {
+                resolutions(width: 520) {
+                  width
+                  height
+                  src
+                  srcSet
+                }
+              }
+            }
             templateKey
             date(formatString: "MMMM DD, YYYY")
           }

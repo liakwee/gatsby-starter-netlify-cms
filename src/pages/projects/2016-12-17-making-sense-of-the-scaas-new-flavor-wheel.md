@@ -8,7 +8,7 @@ description: >-
 tags:
   - flavor
   - tasting
-cover: /img/chemex.jpg
+cover: "/img/chemex.jpg"
 ---
 
 ![flavor wheel](/img/flavor_wheel.jpg)

@@ -95,6 +95,16 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         title
         description
+        cover {
+          childImageSharp {
+            resolutions(width: 400) {
+              width
+              height
+              src
+              srcSet
+            }
+          }
+        }
         tags
       }
     }

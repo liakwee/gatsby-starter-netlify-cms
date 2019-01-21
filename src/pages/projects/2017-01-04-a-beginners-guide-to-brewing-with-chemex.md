@@ -6,6 +6,7 @@ description: Brewing with a Chemex probably seems like a complicated, time-consu
 tags:
   - brewing
   - chemex
+cover: "/img/chemex.jpg"
 ---
 ![chemex](/img/chemex.jpg)
 
