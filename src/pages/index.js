@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, graphql } from 'gatsby';
+import { kebabCase } from 'lodash'
 import Layout from '../components/Layout';
 
 export default class IndexPage extends React.Component {
   render() {
     const { data } = this.props;
     const { edges: posts } = data.allMarkdownRemark;
-
     return (
       <Layout>
         <div>
@@ -41,21 +41,25 @@ export default class IndexPage extends React.Component {
         <section className="">
         <div className="container mx-auto flex justify-start items-start flex-wrap">
           {posts.map(({ node: post }) => (
-            <div className="w-full md:w-1/3 lg:w-1/4 p-4">
-              <a href={post.fields.slug} className="">
-              <img src={post.frontmatter.cover.childImageSharp.resolutions.src} alt=""/>
+            <div className="w-full md:w-1/3 lg:w-1/4 p-4 clearfix h-auto">
+              <a href={post.fields.slug} className="block relative w-full h-auto">
+                <img src={post.frontmatter.cover.childImageSharp.resolutions.src} alt="" className="pin z-0"/>
                 <div
-                  className="w-full"
+                  className="w-full absolute pin z-1"
                   key={post.id}
                 >
-                  <p>
-                    <h3>{post.frontmatter.title}</h3>
-                    <span> &bull; </span>
-                    <small>{post.frontmatter.date}</small>
-                  </p>
-                  <p>
-                    {post.excerpt}
-                  </p>
+                  <h3>{post.frontmatter.title}</h3>
+                  {post.frontmatter.tags && post.frontmatter.tags.length ? (
+                    <div style={{ marginTop: `4rem` }}>
+                      <ul className="taglist">
+                        {post.frontmatter.tags.map(tag => (
+                          <li key={tag + `tag`}>
+                            <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
                 </div>
               </a>
             </div>
@@ -90,6 +94,7 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
+            tags
             cover {
               childImageSharp {
                 resolutions(width: 520) {
