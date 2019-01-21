@@ -12,7 +12,7 @@ export default class IndexPage extends React.Component {
       <Layout>
         <div>
           {/*Left Col*/}
-          <div className="flex flex-col w-full lg:w-1/2 justify-center items-start pt-12 pb-24 px-6">
+          <div className="">
             <p className="uppercase tracking-loose">Witty Tagline</p>
             <h1 className="my-4">My Super App</h1>
             <p className="leading-normal mb-4">
@@ -26,7 +26,7 @@ export default class IndexPage extends React.Component {
             </button>
           </div>
           {/*Right Col*/}
-          <div className="w-full lg:w-1/2 lg:py-6 text-center">
+          <div className="">
             {/*Add your product image here*/}
             <svg
               className="fill-current text-black w-3/5"
@@ -38,11 +38,11 @@ export default class IndexPage extends React.Component {
           </div>
         </div>
 
-        <section className="pb-24 pt-12 md:pt-24">
+        <section className="">
         <div className="container mx-auto flex justify-start items-start flex-wrap">
           {posts.map(({ node: post }) => (
-            <div className="w-full md:w-1/2 lg:w-1/3 p-4">
-              <a href="" className="block no-underline bg-white transition shadow-lg hover:shadow hover:-translateY-sm rounded-lg overflow-hidden">
+            <div className="w-full md:w-1/3 lg:w-1/4 p-4">
+              <a href="" className="">
                 <div
                   className="w-full"
                   key={post.id}
@@ -89,7 +89,7 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          excerpt(pruneLength: 400)
+          excerpt(pruneLength: 100)
           id
           fields {
             slug

@@ -6,9 +6,9 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: 'blog'
-    label: 'Blog'
-    folder: 'src/pages/blog'
+  - name: 'projects'
+    label: 'Projects'
+    folder: 'src/pages/projects'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     fields:
@@ -23,6 +23,20 @@ collections:
       - { label: 'Description', name: 'description', widget: 'text' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
       - { label: 'Tags', name: 'tags', widget: 'list' }
+      - {
+          label: "Cover Image",
+          default: "/uploads/chocolate-dogecoin.jpg",
+          name: cover,
+          widget: image,
+          allow_multiple: true,
+          media_library:
+          {
+            config:
+              {
+                multiple: true
+              }
+          }
+        }
 
   - name: 'pages'
     label: 'Pages'
