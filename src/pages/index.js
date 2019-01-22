@@ -10,7 +10,7 @@ export default class IndexPage extends React.Component {
     return (
       <Layout>
         <div
-          className="mt-24 w-full py-24 px-6 bg-cover bg-no-repeat bg-center relative z-12"
+          className="w-full py-24 px-6 bg-cover bg-no-repeat bg-center relative z-12"
           style={{ backgroundImage: 'url("http://placehold.it/1800x800")' }}
         >
           <div className="container max-w-xl mx-auto text-center">
@@ -30,32 +30,35 @@ export default class IndexPage extends React.Component {
         </div>
 
         <section>
-          <div className="container mx-auto flex justify-start items-start flex-wrap ">
-            {posts.map(({ node: post }) => (
-              <div
-                key={`${post.fields.slug}-div`}
-                className="h-full w-full md:w-1/3 lg:w-1/4 p-4 overflow-hidden"
-              >
-                <a
-                  href={post.fields.slug}
-                  className="hover-block block relative w-full h-auto"
+          <div className="container mx-auto my-12">
+            <h2>Projects</h2>
+            <div className="flex justify-start items-start flex-wrap mb-16">
+              {posts.map(({ node: post }) => (
+                <div
+                  key={`${post.fields.slug}-div`}
+                  className="h-full w-full md:w-1/3 lg:w-1/4 p-4"
                 >
-                  <img
-                    src={post.frontmatter.cover.childImageSharp.resolutions.src}
-                    alt=""
-                    className="block pin z-0"
-                  />
-                  <div
-                    className="pointer-events-none w-full absolute pin z-1 p-4"
-                    key={post.id}
+                  <a
+                    href={post.fields.slug}
+                    className="hover-block block relative w-full h-auto"
                   >
-                    <h3 className="text-lg text-white text-shadow">
-                      {post.frontmatter.title}
-                    </h3>
-                  </div>
-                </a>
-              </div>
-            ))}
+                    <img
+                      src={post.frontmatter.cover.childImageSharp.resolutions.src}
+                      alt=""
+                      className="block pin z-0"
+                    />
+                    <div
+                      className="pointer-events-none w-full absolute pin z-1 p-4"
+                      key={post.id}
+                    >
+                      <h3 className="text-lg text-white text-shadow">
+                        {post.frontmatter.title}
+                      </h3>
+                    </div>
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       </Layout>
