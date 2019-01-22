@@ -18,7 +18,7 @@ const TemplateWrapper = ({ children }) => (
       }
     `}
     render={data => (
-      <div className="bg-grey-light font-sans leading-normal tracking-normal">
+      <div className="font-sans leading-normal tracking-normal">
         <Helmet>
           <html lang="en" />
           <title>{data.site.siteMetadata.title}</title>
