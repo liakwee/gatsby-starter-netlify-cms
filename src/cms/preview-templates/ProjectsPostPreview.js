@@ -9,6 +9,7 @@ const ProjectsPostPreview = ({ entry, widgetFor }) => (
     tags={entry.getIn(['data', 'tags'])}
     title={entry.getIn(['data', 'title'])}
     slider={entry.getIn(['data', 'slider'])}
+    cover={entry.getIn(['data', 'cover'])}
   />
 )
 
